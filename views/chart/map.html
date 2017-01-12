@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+<head>
+    <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+<div id="container" style="height: 100%"></div>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/echarts-all-3.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/dataTool.min.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
+<!--<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=ZUONbpqGBsYGXNIYHicvbAbM"></script>-->
+<script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
+<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<link href="data.json">
+<script type="text/javascript">
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+    option = null;
+    function randomData() {
+        return Math.round(Math.random()*1000);
+    }
+
+    option = {
+        title: {
+            text: 'iphone销量',
+            subtext: '纯属虚构',
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'item'
+        },
+        legend: {
+            orient: 'vertical',
+            left: 'left',
+            data:['iphone5']
+        },
+        visualMap: {
+            min: 0,
+            max: 2500,
+            left: 'left',
+            top: 'bottom',
+            text: ['高','低'],           // 文本，默认为数值文本
+            calculable: true
+        },
+        toolbox: {
+            show: true,
+            orient: 'vertical',
+            left: 'right',
+            top: 'center',
+            feature: {
+                dataView: {readOnly: false},
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        series: [
+            {
+                name: 'iphone5',
+                type: 'map',
+                mapType: 'china',
+                label: {
+                    normal: {
+                        show: true
+                    },
+                    emphasis: {
+                        show: true
+                    }
+                },
+                data:[/*{name: '北京',value: randomData() },
+                    {name: '天津',value: randomData() },
+                    {name: '上海',value: randomData() },
+                    {name: '广东',value: randomData() },
+                    {name: '台湾',value: randomData() },
+                    {name: '香港',value: randomData() },
+                    {name: '澳门',value: randomData() }*/]
+            }
+        ]
+    };
+    if (option && typeof option === "object") {
+        myChart.setOption(option, true);
+    }
+   /* $.get('data.json').done(function (data) {
+        // 填入数据
+        myChart.setOption({
+           series: [{
+               name: 'iphone5',
+               type: 'map',
+               mapType: 'china',
+               label: {
+                   normal: {
+                       show: true
+                   },
+                   emphasis: {
+                       show: true
+                   }
+               },
+               data:data.data
+            }]
+        });
+    });*/
+
+     $.ajax({
+     type : "post",
+     async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
+     url : "http://localhost:8080/SpringMVCpomp/MapController",    //请求发送到TestServlet处
+     data : {},
+     dataType : "json",        //返回数据形式为json
+     success : function(result) {
+     //请求成功时执行该函数内容，result即为服务器返回的json对象
+     if (result) {
+     myChart.hideLoading();    //隐藏加载动画
+     myChart.setOption({        //加载数据图表
+         series: [{
+             name: 'iphone5',
+             type: 'map',
+             mapType: 'china',
+             label: {
+                 normal: {
+                     show: true
+                 },
+                 emphasis: {
+                     show: true
+                 }
+             },
+             data:result
+         }]
+     });
+
+     }
+
+     },
+     error : function(errorMsg) {
+     //请求失败时执行该函数
+     alert("图表请求数据失败!");
+     myChart.hideLoading();
+     }
+     })
+</script>
+</body>
+</html>

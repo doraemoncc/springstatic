@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>amchart</title>
+
+    <!--<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>-->
+    <script src="../../src/data/src/amcharts.js"></script>
+    <script src="https://www.amcharts.com/lib/3/gauge.js"></script>
+    <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+    <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all"/>
+    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <script src="https://www.amcharts.com/lib/3/maps/js/chinaLow.js"></script>
+    <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+    <!-- <script src="https://www.amcharts.com/lib/3/maps/js/chinaLow.js"></script>   // 加上主题变蓝 -->
+
+    <script>
+        var gaugeChart = AmCharts.makeChart("chartdiv1", {
+            "type": "gauge",
+            "theme": "light",
+            "axes": [{
+                "axisThickness": 1,
+                "axisAlpha": 0.2,
+                "tickAlpha": 0.2,
+                "valueInterval": 20,
+                "bands": [{
+                    "color": "#84b761",
+                    "endValue": 90,
+                    "startValue": 0
+                }, {
+                    "color": "#fdd400",
+                    "endValue": 130,
+                    "startValue": 90
+                }, {
+                    "color": "#cc4748",
+                    "endValue": 220,
+                    "innerRadius": "95%",
+                    "startValue": 130
+                }],
+                "bottomText": "0 km/h",
+                "bottomTextYOffset": -20,
+                "endValue": 220
+            }],
+            "arrows": [{}],
+            "export": {
+                "enabled": true
+            }
+        });
+        setInterval(randomValue, 2000);
+
+        // set random value
+        function randomValue() {
+            var value = Math.round(Math.random() * 200);
+            if (gaugeChart) {
+                if (gaugeChart.arrows) {
+                    if (gaugeChart.arrows[0]) {
+                        if (gaugeChart.arrows[0].setValue) {
+                            gaugeChart.arrows[0].setValue(value);
+                            gaugeChart.axes[0].setBottomText(value + " T/S");
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+        var b;
+        b.type = "map";
+        b.theme = "light";
+        b.colorSteps = 10;
+        b.dataProvider = {
+            "map": "chinaLow",
+            "areas": [{
+                "id": "CN-34",
+                "value": 4447100
+            }, {
+                "id": "CN-11",
+                "value": 62693200
+            }]
+        };
+        b.areasSettings = {
+            "autoZoom": true
+        };
+        b.valueLegend = {
+            "right": 10,
+            "minValue": "little",
+            "maxValue": "a lot!"
+        };
+        b.export = {
+            "enabled": true
+        };
+        if(typeof b=='object'&& typeof b.type=='string'){
+
+            var map = AmCharts.makeChart("chartdiv2", b);
+        }
+      /*  "type": "map",
+                "theme": "light",
+                "colorSteps": 10,
+
+                "dataProvider": {
+            "map": "chinaLow",
+                    "areas": [ {
+                "id": "CN-34",
+                "value": 4447100
+            }, {
+                "id": "CN-11",
+                "value": 62693200
+            }, {
+                "id": "CN-50",
+                "value": 5130632
+            }, {
+                "id": "CN-35",
+                "value": 2673400
+            }, {
+                "id": "CN-44",
+                "value": 33871648
+            }, {
+                "id": "CN-62",
+                "value": 4301261
+            }, {
+                "id": "CN-45",
+                "value": 3405565
+            }, {
+                "id": "CN-52",
+                "value": 783600
+            }, {
+                "id": "CN-46",
+                "value": 15982378
+            }, {
+                "id": "CN-13",
+                "value": 8186453
+            }, {
+                "id": "CN-41",
+                "value": 1211537
+            }, {
+                "id": "CN-91",
+                "value": 1293953
+            }, {
+                "id": "CN-23",
+                "value": 12419293
+            }, {
+                "id": "CN-43",
+                "value": 6080485
+            }, {
+                "id": "CN-42",
+                "value": 2926324
+            }]
+        },
+
+        "areasSettings": {
+            "autoZoom": true
+        },
+
+        "valueLegend": {
+            "right": 10,
+                    "minValue": "little",
+                    "maxValue": "a lot!"
+        },
+
+        "export": {
+            "enabled": true
+        }*/
+    </script>
+
+</head>
+<body>
+<div id="chartdiv1"></div>
+<div id="chartdiv2"></div>
+</body>
+
+<!-- Styles -->
+<style>
+    #chartdiv1 {
+        width: 50%;
+        height: 500px;
+        float: left;
+    }
+
+    #chartdiv2 {
+        width: 50%;
+        height: 500px;
+        float: right;
+    }
+
+    <
+    /
+    html >

@@ -1,0 +1,80 @@
+<!DOCTYPE html><html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="">
+<title>ez-kissy-demo</title>
+<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+<!-- start of KISSY+BUI script -->
+
+<link href="http://22.11.143.109/kissy/1.4.9-Co/css/dpl/base-min.css" rel="stylesheet">
+<link href="http://22.11.143.109/kissy/20141114/bui/css/bs3/dpl-min.css" rel="stylesheet">
+<link href="http://22.11.143.109/kissy/20141114/bui/css/bs3/bui-min.css" rel="stylesheet">
+
+<script>
+        // KISSY.importStyle('bee-demo/index.css');//阻塞加载 css模块或 js模块依赖的 css 模块
+</script>
+<!-- end of KISSY+BUI script -->
+
+<!-- start of personalized style -->
+
+<!-- end of personalized style -->
+</head>
+	<body>
+
+	
+		<div class="mcontent">
+			<div id="kissy"></div>
+			<button type="button" class="button-small" id="tst"></button>
+			<p>
+				<button type="button" class="button" id="testKissyListening"></button>
+				<button type="button" class="button" id="disagree"></button>
+			</p>
+	
+			<div class="hd1">BUI 前端框架控件库</div>
+			<hr />
+			<div style="width: 1200px; height: auto; margin: 0 auto">
+				<div class="row-fluid">
+					<div class="span4">
+						<div class="panel panel-head-borded panel-small">
+							<div class="panel-header" style="height: 18px">
+								<span class="pull-left">左侧树</span>
+							</div>
+							<div id="t1"></div>
+						</div>
+					</div>
+	
+					<div class="span20 span20_iefix">
+						<div class="panel panel-head-borded panel-small">
+							<div class="panel-header">右侧栏目</div>
+							<div id="log" class="log">
+								<div class="wel" style="border:1px #bebebe solid;height:300px">Hello</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+	
+	
+		</div>
+	
+
+	
+		
+		<script src="http://22.11.143.109/kissy/jquery/jquery-1.8.1.min.js"></script>
+		<!-- <script src="http://22.11.143.109/kissy/??seed-min.js,import-style-min.js,/bui/adapter-min.js" data-config="{combine:true}"></script> -->	
+		<!-- 在项目发布时，请以上面的一行代码替换下面三行 -->
+		<script src="http://22.11.143.109/kissy/1.4.9-Co/seed-min.js"></script>
+		<script src="http://22.11.143.109/kissy/1.4.9-Co/import-style-min.js"></script>
+		<script src="http://22.11.143.109/kissy/20141114/bui/adapterCo-min.js"></script>
+		
+		<!-- start of personalized script -->
+		<script src="./src/moduleConfig.js"></script>
+		<script src="./src/index.js"></script>
+		<!-- <script src="./src/moduleConfig-min.js"></script>
+		<script src="./src/index-min.js"></script> -->
+		<!-- end of personalized script -->
+
+
+	</body>
+</html>
