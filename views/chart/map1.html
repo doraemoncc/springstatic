@@ -10,7 +10,7 @@
 <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/china.js"></script>
 <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/map/js/world.js"></script>
 <script type="text/javascript" src="http://echarts.baidu.com/gallery/vendors/echarts/extension/bmap.min.js"></script>
-<script type="text/javascript" src="jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="../../lib/jquery-3.1.1.min.js"></script>
 <link href="data.json">
 <script type="text/javascript">
     var dom = document.getElementById("container");
@@ -141,7 +141,7 @@
         $.ajax({
             type : "post",
             async : true,            //异步请求（同步请求将会锁住浏览器，用户其他操作必须等待请求完成才可以执行）
-            url : "http://localhost:8080/SpringMVCpomp/MapController",    //请求发送到MapController处
+            url : "http://localhost:8080/SpringMVCpomp/getdata",    //请求发送到MapController处
             data : {},
             dataType : "json",        //返回数据形式为json
             success : function(result) {
