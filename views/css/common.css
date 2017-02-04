@@ -1,0 +1,12 @@
+/*----------主页面通用尾部*/
+footer{ background:#ccced0; border-color: #000;border-top: 1px solid rgba(255, 255, 255, .25);}
+footer.public_foot{ padding:25px 0; min-width:1000px;}
+.foot_wrap{ text-align:center;color:#666; line-height:20px;background:#CCCED0;}
+.foot_links{}
+.foot_links a{ padding:0 5px; color:#666;}
+.foot_links span { display: inline-block; font: bold 12px/22px 'Microsoft YaHei';margin-left: 5px;}
+.p_links{ margin-top:5px;}
+.p_links a ,.p_links em { color:#666; display: inline-block;}
+.p_links em {margin: 0 3px;}
+.p_links a:hover{text-decoration:none; color:#b50029;}
+.p_links a.inner_foot_login_notlinks:hover{ text-decoration:none; color:#666;}
