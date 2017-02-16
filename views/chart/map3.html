@@ -7,7 +7,7 @@
            background-color: lightblue;
             margin-left:auto;
             margin-right:auto;
-            width:90%;
+           width: 90%;
             /*width: 1200%;*/
             height: 600px;
             border-bottom: 1px solid #dfdfdf;
@@ -74,7 +74,7 @@
     option = null;
     option = {
         tooltip : {
-            formatter: "{a} <br/>{b} : {c}%"
+            formatter: "{a} <br/>{b} : {c}",
         },
         toolbox: {
             feature: {
@@ -84,10 +84,20 @@
         },
         series: [
             {
-                name: '业务指标',
+                name: '交易量',
                 type: 'gauge',
-                detail: {formatter:'{value}%'},
-                data: [{value: 50, name: '完成率'}]
+                radius:'45%',
+                axisLine:{
+                    lineStyle:{
+                        color:[[0.2, '#91c7ae'], [0.8, '#63869e'], [1, '#c23531']],
+                        width: 10 ,
+                    },
+                },
+                pointer:{
+                    width: 4,
+                },
+                detail: {formatter:'{value}'},
+                data: [{value: 50, name: 'IPPS交易量'}]
             }
         ]
     };
